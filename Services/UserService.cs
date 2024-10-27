@@ -1,28 +1,32 @@
 using MongoDB.Driver;
-using ProjectRoot.Models;
-using ProjectRoot.Database;
+using YourNamespace.Models;
 
-namespace ProjectRoot.Services
+namespace YourNamespace.Services
 {
     public class UserService
     {
         private readonly IMongoCollection<User> _usersCollection;
 
-        public UserService(MongoDBService mongoDBService)
+        public UserService(IConfiguration configuration)
         {
-            _usersCollection = mongoDBService.GetCollection<User>("Users");
+            var mongoClient = new MongoClient(configuration.GetConnectionString("MongoDbConnection"));
+            var mongoDatabase = mongoClient.GetDatabase(configuration["DatabaseSettings:DatabaseName"]);
+            _usersCollection = mongoDatabase.GetCollection<User>(configuration["DatabaseSettings:UserCollectionName"]);
         }
 
-        public async Task<List<User>> GetAllAsync() =>
+        public async Task<List<User>> GetUsersAsync() =>
             await _usersCollection.Find(_ => true).ToListAsync();
 
-        public async Task<User?> GetByIdAsync(string id) =>
+        public async Task<User?> GetUserByIdAsync(string id) =>
             await _usersCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
 
-        public async Task CreateAsync(User user) =>
-            await _usersCollection.InsertOneAsync(user);
+        public async Task CreateUserAsync(User newUser) =>
+            await _usersCollection.InsertOneAsync(newUser);
 
-        public async Task DeleteAsync(string id) =>
+        public async Task UpdateUserAsync(string id, User updatedUser) =>
+            await _usersCollection.ReplaceOneAsync(x => x.Id == id, updatedUser);
+
+        public async Task DeleteUserAsync(string id) =>
             await _usersCollection.DeleteOneAsync(x => x.Id == id);
     }
 }

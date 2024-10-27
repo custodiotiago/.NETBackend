@@ -1,11 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
-using ProjectRoot.Models;
-using ProjectRoot.Services;
+using YourNamespace.Models;
+using YourNamespace.Services;
 
-namespace ProjectRoot.Controllers
+namespace YourNamespace.Controllers
 {
-    [ApiController]
     [Route("api/[controller]")]
+    [ApiController]
     public class UserController : ControllerBase
     {
         private readonly UserService _userService;
@@ -16,34 +16,45 @@ namespace ProjectRoot.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<User>>> GetAll()
-        {
-            var users = await _userService.GetAllAsync();
-            return Ok(users);
-        }
+        public async Task<ActionResult<List<User>>> Get() =>
+            await _userService.GetUsersAsync();
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetById(string id)
-        {
-            var user = await _userService.GetByIdAsync(id);
-            if (user == null) return NotFound();
-            return Ok(user);
-        }
+        public async Task<ActionResult<User>> GetById(string id) =>
+            await _userService.GetUserByIdAsync(id);
 
         [HttpPost]
-        public async Task<ActionResult> Create(User user)
+        public async Task<IActionResult> Create(User newUser)
         {
-            await _userService.CreateAsync(user);
-            return CreatedAtAction(nameof(GetById), new { id = user.Id }, user);
+            await _userService.CreateUserAsync(newUser);
+            return CreatedAtAction(nameof(GetById), new { id = newUser.Id }, newUser);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(string id, User updatedUser)
+        {
+            var user = await _userService.GetUserByIdAsync(id);
+
+            if (user is null)
+                return NotFound();
+
+            updatedUser.Id = user.Id;
+
+            await _userService.UpdateUserAsync(id, updatedUser);
+
+            return NoContent();
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult> Delete(string id)
+        public async Task<IActionResult> Delete(string id)
         {
-            var user = await _userService.GetByIdAsync(id);
-            if (user == null) return NotFound();
+            var user = await _userService.GetUserByIdAsync(id);
 
-            await _userService.DeleteAsync(id);
+            if (user is null)
+                return NotFound();
+
+            await _userService.DeleteUserAsync(id);
+
             return NoContent();
         }
     }
