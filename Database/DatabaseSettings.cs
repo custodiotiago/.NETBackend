@@ -1,4 +1,4 @@
-namespace ProjectRoot.Database
+namespace DotnetBackend.Database
 {
     public class DatabaseSettings
     {

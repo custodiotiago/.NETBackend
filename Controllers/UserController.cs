@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using YourNamespace.Models;
-using YourNamespace.Services;
+using DotnetBackend.Models;
+using DotnetBackend.Services;
 
 namespace YourNamespace.Controllers
 {
