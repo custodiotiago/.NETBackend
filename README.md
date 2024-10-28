@@ -14,4 +14,3 @@ Com suporte ao MongoDB (Azure Cosmos DB) para armazenamento de dados, a aplicaç
 - Hospedagem na Azure para alta disponibilidade e performance  
 
 ## 🚀 Aplicações Frontend:
-- TODO
