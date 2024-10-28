@@ -1,0 +1,7 @@
+C:\Users\tiago\OneDrive\Documentos\UTFPR\Projetos Pessoais\dotnetBackend\obj\Debug\net8.0\dotnetBackend.csproj.AssemblyReference.cache
+C:\Users\tiago\OneDrive\Documentos\UTFPR\Projetos Pessoais\dotnetBackend\obj\Debug\net8.0\dotnetBackend.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\tiago\OneDrive\Documentos\UTFPR\Projetos Pessoais\dotnetBackend\obj\Debug\net8.0\dotnetBackend.AssemblyInfoInputs.cache
+C:\Users\tiago\OneDrive\Documentos\UTFPR\Projetos Pessoais\dotnetBackend\obj\Debug\net8.0\dotnetBackend.AssemblyInfo.cs
+C:\Users\tiago\OneDrive\Documentos\UTFPR\Projetos Pessoais\dotnetBackend\obj\Debug\net8.0\dotnetBackend.csproj.CoreCompileInputs.cache
+C:\Users\tiago\OneDrive\Documentos\UTFPR\Projetos Pessoais\dotnetBackend\obj\Debug\net8.0\dotnetBackend.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\tiago\OneDrive\Documentos\UTFPR\Projetos Pessoais\dotnetBackend\obj\Debug\net8.0\dotnetBackend.MvcApplicationPartsAssemblyInfo.cache
