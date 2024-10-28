@@ -11,4 +11,12 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Database\DatabaseSettings.cs" />
+    <Compile Include="Database\MongoDBService.cs" />
+    <Compile Include="Models\UserModel.cs" />
+    <Compile Include="Services\UserService.cs" />
+  </ItemGroup>
+
 </Project>

@@ -1,7 +1,7 @@
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 
-namespace ProjectRoot.Database
+namespace DotnetBackend.Database
 {
     public class MongoDBService
     {

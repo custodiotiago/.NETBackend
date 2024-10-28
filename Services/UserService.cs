@@ -1,7 +1,10 @@
 using MongoDB.Driver;
 using DotnetBackend.Models;
+using Microsoft.Extensions.Configuration;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
-namespace YourNamespace.Services
+namespace DotnetBackend.Services
 {
     public class UserService
     {
