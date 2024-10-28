@@ -1,6 +1,3 @@
-# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
-# More GitHub Actions for Azure: https://github.com/Azure/actions
-
 name: Build and deploy ASP.Net Core app to Azure Web App - dotnetBackendApp
 
 on:
@@ -40,13 +37,14 @@ jobs:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     permissions:
-      id-token: write #This is required for requesting the JWT
+      id-token: write
 
     steps:
       - name: Download artifact from build job
         uses: actions/download-artifact@v4
         with:
           name: .net-app
+          path: ./downloaded_artifact # Define um local específico para o artefato baixado
       
       - name: Login to Azure
         uses: azure/login@v2
@@ -61,4 +59,4 @@ jobs:
         with:
           app-name: 'dotnetBackendApp'
           slot-name: 'Production'
-          package: ./myapp
+          package: ./downloaded_artifact # Aponta para o caminho onde o artefato foi baixado
