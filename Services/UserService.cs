@@ -12,9 +12,9 @@ namespace DotnetBackend.Services
 
         public UserService(IConfiguration configuration)
         {
-            var mongoClient = new MongoClient(configuration.GetConnectionString("MongoDbConnection"));
+            var mongoClient = new MongoClient(configuration["DatabaseSettings:connectionString"]); // Corrigido
             var mongoDatabase = mongoClient.GetDatabase(configuration["DatabaseSettings:DatabaseName"]);
-            _usersCollection = mongoDatabase.GetCollection<User>(configuration["DatabaseSettings:UserCollectionName"]);
+            _usersCollection = mongoDatabase.GetCollection<User>(configuration["DatabaseSettings:UserCollectionName"]); // Corrigido
         }
 
         public async Task<List<User>> GetUsersAsync() =>

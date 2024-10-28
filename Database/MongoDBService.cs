@@ -9,7 +9,7 @@ namespace DotnetBackend.Database
 
         public MongoDBService(IOptions<DatabaseSettings> databaseSettings)
         {
-            var client = new MongoClient(databaseSettings.Value.ConnectionString);
+            var client = new MongoClient(databaseSettings.Value.connectionString);
             _database = client.GetDatabase(databaseSettings.Value.DatabaseName);
         }
 
